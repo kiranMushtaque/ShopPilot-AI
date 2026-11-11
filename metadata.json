@@ -1,0 +1,6 @@
+{
+  "name": "ShopPilot AI",
+  "description": "Zero-budget, local-first multilingual AI sales and customer support digital employee for e-commerce stores.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
