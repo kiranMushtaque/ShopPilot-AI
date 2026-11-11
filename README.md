@@ -124,28 +124,4 @@ Warning: these credentials are for local demos only. Change or remove them befor
 | `GET` | `/api/knowledge/documents` | Yes (ADMIN) | List knowledge documents |
 | `POST` | `/api/knowledge/documents` | Yes (ADMIN) | Save/index knowledge document |
 
-## Scripts
-- `npm run dev`: Start development server (`tsx server.ts`)
-- `npm run build`: Build production bundle (`vite build && esbuild ...`)
-- `npm run start`: Start production server (`node dist/server.cjs`)
-- `npm run clean`: Clean build output directory (`rm -rf dist`)
-- `npm run lint`: Run TypeScript type check (`tsc --noEmit`)
-- `npm run typecheck`: Run TypeScript type check (`tsc --noEmit`)
-- `npm run test`: Run unit tests (`tsx --test tests/unit.test.ts`)
 
-## Tests
-- Total Tests: 3 Master test suites covering Password Validation & Hashing, Prompt Injection Defense, and Conversation Memory Parsing (`tests/unit.test.ts`).
-
-## Known Limitations
-- **In-Memory Fallback State**: If PostgreSQL is unreachable, data runs in-memory and resets upon server restart.
-- **RAG Implementation**: Knowledge base search utilizes keyword frequency matching rather than vector embeddings.
-- **Unused Dependencies**: `@google/genai` is listed in `package.json` but has no imports or usage in the codebase.
-- **Default Secret**: Default `SESSION_SECRET` should be changed in production environments.
-- **Missing Tests**: Integration and end-to-end browser tests are not currently implemented.
-- No database-level row locking (SELECT ... FOR UPDATE) is implemented, so concurrent checkout on low-stock items is not guarded in PostgreSQL mode.
-- In PostgreSQL mode, schema.sql is not applied automatically; it must be loaded manually or via the Docker init setup.
-
-## Troubleshooting
-- **Port Busy**: Ensure port 3000 is free or change `PORT` in `.env`.
-- **Docker/Postgres**: Verify Docker daemon is running before executing `docker compose up -d`.
-- **Ollama Connection**: Ensure Ollama is running at `http://localhost:11434` and model `qwen2.5:3b` is pulled (`ollama pull qwen2.5:3b`).
